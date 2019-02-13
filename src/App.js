@@ -49,21 +49,31 @@ class App extends React.Component {
 
   handleClickToDo = e => {
     e.target.classList.toggle("complete");
-    e.target.completed = true;
+    e.target.completed = !e.target.completed;
+    console.log(e.target.completed);
   };
 
-  handleCompleteTasks = () => {};
+  handleCompleteTasks = () => {
+    this.setState({
+      todos: this.state.todos.filter(todo => !todo.completed)
+    });
+  };
 
   render() {
     return (
       <div className="container">
         <h2>To Do Application</h2>
+
         <TodoForm
           handleAddToDo={this.handleAddToDo}
           handleChange={this.handleChange}
           task={this.state.task}
         />
-        <button className="completeBtn">Complete Tasks</button>
+
+        <button className="completeBtn" onClick={this.handleCompleteTasks}>
+          Complete Tasks
+        </button>
+
         <TodoList
           handleClickToDo={this.handleClickToDo}
           handleCompleteTasks={this.handleCompleteTasks}
