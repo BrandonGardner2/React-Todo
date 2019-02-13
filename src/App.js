@@ -18,18 +18,57 @@ const init = [
 
 class App extends React.Component {
   state = {
-    todos: init
+    todos: init,
+    task: ""
   };
 
-  handleAddToDo() {}
+  clearForm = () => {
+    this.setState({
+      task: ""
+    });
+  };
 
-  handleClickToDo() {}
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
 
-  handleComplete() {}
+  handleAddToDo = e => {
+    e.preventDefault();
+    const newTodo = {
+      task: this.state.task,
+      id: Date.now(),
+      completed: false
+    };
+    this.setState({
+      todos: [...this.state.todos, newTodo]
+    });
+    this.clearForm();
+  };
+
+  handleClickToDo = e => {
+    e.target.classList.toggle("complete");
+    e.target.completed = true;
+  };
+
+  handleCompleteTasks = () => {};
+
   render() {
     return (
       <div className="container">
         <h2>To Do Application</h2>
+        <TodoForm
+          handleAddToDo={this.handleAddToDo}
+          handleChange={this.handleChange}
+          task={this.state.task}
+        />
+        <button className="completeBtn">Complete Tasks</button>
+        <TodoList
+          handleClickToDo={this.handleClickToDo}
+          handleCompleteTasks={this.handleCompleteTasks}
+          todos={this.state.todos}
+        />
       </div>
     );
   }
