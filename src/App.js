@@ -47,10 +47,10 @@ class App extends React.Component {
     this.clearForm();
   };
 
-  handleClickToDo = e => {
+  handleClickToDo = (e, id) => {
     e.target.classList.toggle("complete");
     const todos = this.state.todos.map(todo => {
-      if (todo.id === e.target.id) {
+      if (todo.id === id) {
         todo.completed = !todo.completed;
         return todo;
       } else {
