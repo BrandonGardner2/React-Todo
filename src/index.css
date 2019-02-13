@@ -186,10 +186,8 @@ body {
   background: #2d2d2d;
 }
 
-header {
-  background-color: black;
+h2 {
   color: white;
-  height: 8vh;
   display: flex;
   justify-content: center;
   align-items: center;

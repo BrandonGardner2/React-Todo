@@ -70,9 +70,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="appContainer">
-        <header>
-          <h2>To Do Application</h2>
-        </header>
+        <h2>To Do Application</h2>
 
         <div className="container">
           <section className="ctas">
