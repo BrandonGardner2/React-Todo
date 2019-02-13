@@ -49,8 +49,15 @@ class App extends React.Component {
 
   handleClickToDo = e => {
     e.target.classList.toggle("complete");
-    e.target.completed = !e.target.completed;
-    console.log(e.target.completed);
+    const todos = this.state.todos.map(todo => {
+      if (todo.id === e.target.id) {
+        todo.completed = !todo.completed;
+        return todo;
+      } else {
+        return todo;
+      }
+    });
+    this.setState({ todos });
   };
 
   handleCompleteTasks = () => {
