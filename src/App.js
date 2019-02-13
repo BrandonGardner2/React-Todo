@@ -19,8 +19,41 @@ const init = [
 
 class App extends React.Component {
   state = {
-    todos: init,
+    todos: [],
     task: ""
+  };
+
+  componentDidMount() {
+    this.hydrateState();
+
+    window.addEventListener("beforeunload", this.saveToLocalStorage);
+  }
+
+  componentWillUnmount() {
+    this.saveToLocalStorage();
+
+    window.removeEventListener("beforeunload", this.saveToLocalStorage);
+  }
+
+  saveToLocalStorage = () => {
+    localStorage.setItem("todos", JSON.stringify(this.state.todos));
+  };
+
+  hydrateState = () => {
+    if (localStorage.hasOwnProperty("todos")) {
+      let value = localStorage.getItem("todos");
+      console.log(value);
+      try {
+        value = JSON.parse(value);
+        this.setState({
+          todos: value
+        });
+      } catch (e) {
+        this.setState({
+          todos: init
+        });
+      }
+    }
   };
 
   clearForm = () => {
