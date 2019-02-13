@@ -183,7 +183,7 @@ template {
 }
 
 body {
-  background: #6b6b6b;
+  background: #2d2d2d;
 }
 
 header {
@@ -205,8 +205,33 @@ header {
 
 .ctas {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   min-width: 400px;
   max-width: 500px;
   margin-bottom: 20px;
+}
+
+.btn {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: 0.4s;
+}
+
+.btn:hover {
+  transition: 0.4s;
+  transform: translateY(-2px);
+}
+.btn:active {
+  transition: 0.4s;
+  transform: translateY(2px);
+}
+
+.completeBtn {
+  background-color: greenyellow;
+  padding: 5px;
+  margin: 0;
 }

@@ -82,7 +82,10 @@ class App extends React.Component {
               task={this.state.task}
             />
 
-            <button className="completeBtn" onClick={this.handleCompleteTasks}>
+            <button
+              className="btn completeBtn"
+              onClick={this.handleCompleteTasks}
+            >
               Complete Tasks
             </button>
           </section>

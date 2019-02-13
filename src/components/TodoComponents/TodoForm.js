@@ -10,7 +10,7 @@ const ToDoForm = props => {
         onChange={props.handleChange}
         name="task"
       />
-      <button>Add Todo</button>
+      <button className="btn addBtn">Add Todo</button>
     </form>
   );
 };
