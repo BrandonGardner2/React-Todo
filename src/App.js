@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.css";
 
 import TodoForm from "./components/TodoComponents/TodoForm";
 import TodoList from "./components/TodoComponents/TodoList";
@@ -48,7 +49,7 @@ class App extends React.Component {
   };
 
   handleClickToDo = (e, id) => {
-    e.target.classList.toggle("complete");
+    e.target.parentElement.classList.toggle("complete");
     const todos = this.state.todos.map(todo => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
@@ -68,24 +69,32 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <h2>To Do Application</h2>
+      <div className="appContainer">
+        <header>
+          <h2>To Do Application</h2>
+        </header>
 
-        <TodoForm
-          handleAddToDo={this.handleAddToDo}
-          handleChange={this.handleChange}
-          task={this.state.task}
-        />
+        <div className="container">
+          <section className="ctas">
+            <TodoForm
+              handleAddToDo={this.handleAddToDo}
+              handleChange={this.handleChange}
+              task={this.state.task}
+            />
 
-        <button className="completeBtn" onClick={this.handleCompleteTasks}>
-          Complete Tasks
-        </button>
+            <button className="completeBtn" onClick={this.handleCompleteTasks}>
+              Complete Tasks
+            </button>
+          </section>
 
-        <TodoList
-          handleClickToDo={this.handleClickToDo}
-          handleCompleteTasks={this.handleCompleteTasks}
-          todos={this.state.todos}
-        />
+          <section className="list">
+            <TodoList
+              handleClickToDo={this.handleClickToDo}
+              handleCompleteTasks={this.handleCompleteTasks}
+              todos={this.state.todos}
+            />
+          </section>
+        </div>
       </div>
     );
   }

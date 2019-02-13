@@ -2,7 +2,7 @@ import React from "react";
 
 const ToDoForm = props => {
   return (
-    <form onSubmit={props.handleAddToDo}>
+    <form onSubmit={props.handleAddToDo} className="todoForm">
       <input
         type="text"
         placeholder="...todo"
