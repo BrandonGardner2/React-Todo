@@ -70,15 +70,17 @@ class App extends React.Component {
 
   handleAddToDo = e => {
     e.preventDefault();
-    const newTodo = {
-      task: this.state.task,
-      id: Date.now(),
-      completed: false
-    };
-    this.setState({
-      todos: [...this.state.todos, newTodo]
-    });
-    this.clearForm();
+    if (this.state.task !== "") {
+      const newTodo = {
+        task: this.state.task,
+        id: Date.now(),
+        completed: false
+      };
+      this.setState({
+        todos: [...this.state.todos, newTodo]
+      });
+      this.clearForm();
+    }
   };
 
   handleClickToDo = (e, id) => {
